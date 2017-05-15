@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from base import Preprocess,train_feat,test_feat,label_feat
 
 class UseRawInput(Preprocess):
