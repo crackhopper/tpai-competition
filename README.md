@@ -18,13 +18,16 @@
   new notebooks based on them and do experiments on those new notebooks.
 - The three notebook files are for developing custom data loader, feature
   extractor and estimator respectively.
-- Please make sure not to update the boilerplate notebook.
+- Please make sure not to update these notebook boilerplate when pushing.
 
 # about config.py
-- modify it as u like.
-- do not push a custom one into the repo.
+- it contains default configuration of the tools.
+- make a file named `custom_config.py` and assign new values in it to replace
+  the defaullt config.
 
 # about the project
+This project is designed to use for data mining competitions.
+
 - for initialize, you only need to run `python convert_data.py`
 - for any update, you need
   - modify the config file as you like
