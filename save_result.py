@@ -12,14 +12,7 @@ with open(os.path.join(destdir,'model.pkl'),'rb') as f:
 curdir = os.getcwd()
 os.chdir(destdir)
 
-X_train = extracted['trX']
-y_train = extracted['trY']
 X_test = extracted['teX']
-if bShuffle:
-    N = X_train.shape[0]
-    idx = np.random.permutation(N)
-    X_train = X_train.as_matrix()[idx]
-    y_train = y_train.as_matrix()[idx]
 
 testY = clf.predict(X_test)
 fname = 'submission.csv'

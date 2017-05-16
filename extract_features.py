@@ -5,7 +5,7 @@ from config import *
 
 prep = Extractor(raw_data)
 trainX,trainY = prep.get_train()
-testX,testY  = prep.get_train()
+testX,testY  = prep.get_test()
 
 extracted = pd.HDFStore('./_extracted/%s.db'%extractor_name)
 extracted['trX']=trainX
