@@ -12,3 +12,7 @@ class Constant(BaseEstimator):
         N = X.shape[0]
         return np.ones([N])*self.val
 
+estimator = Constant()
+tuned_parameters = [{
+        'val':[0,1],
+},]

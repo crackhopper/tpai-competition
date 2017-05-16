@@ -2,6 +2,7 @@
 import pandas as pd
 from config import *
 import os
+import pickle
 
 store = pd.HDFStore(os.path.join(dataDir,dataFile))
 info = open(os.path.join(dataDir,infoFile),'wb')
@@ -26,7 +27,7 @@ file_tb={
 pickle.dump(file_tb,info)
 
 for n,s in file_tb.items():
-  store[n]=pd.read_csv(datadir+n+'.csv')
+  store[n]=pd.read_csv(dataDir+n+'.csv')
 store.flush(fsync=True)
 
 
