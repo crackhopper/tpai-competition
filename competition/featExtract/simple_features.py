@@ -2,7 +2,8 @@
 from competition.featExtract.base import Extractor
 import pandas as pd
 
-
+# this is an example extractor, and you should develop your own according to the
+# dataset.
 
 class SimpleFeatures(Extractor):
     def __init__(self, raw_data):

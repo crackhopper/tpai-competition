@@ -7,3 +7,5 @@
 store
 *.pyc
 *.zip
+*.ipynb
+custom_config.py
