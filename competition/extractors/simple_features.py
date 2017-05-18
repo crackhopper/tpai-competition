@@ -11,7 +11,7 @@ class SimpleFeatures(BaseExtractor):
         X = self.merge_tables(X)
         return X,y
 
-    def get_test(self,dataframe):
+    def get_test(self,raw_data):
         self.init(raw_data)
         X,y = self._get(raw_data,raw_data.store['test'])
         X = self.merge_tables(X)
