@@ -13,6 +13,9 @@ import pickle
 destdir = './_results/%s-%s/'%(extractor_name,estimator_name)
 if not os.path.exists(destdir):
     os.mkdir(destdir)
+if os.path.exists(os.path.join(destdir,'model.pkl')):
+    raise RuntimeError("%s exists"%os.path.join(destdir,'model.pkl'))
+
 
 X_train = extracted['trX']
 y_train = extracted['trY']
@@ -45,8 +48,13 @@ print ''
 print "Detailed classification report:"
 print "The model is trained on the full development set."
 print "The scores are computed on the full evaluation set."
-y_true, y_pred = y_train, clf.predict(X_train)
-print classification_report(y_true, y_pred)
+
+if bProb:
+    print 'output probability, no classification report yet'
+else:
+    y_true, y_pred = y_train, clf.predict(X_train)
+    print classification_report(y_true, y_pred)
+
 print -official_score(clf,X_train,y_train)
 
 with open(os.path.join(destdir,'model.pkl'),'wb') as f:

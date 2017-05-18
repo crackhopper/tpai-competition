@@ -8,4 +8,5 @@ store
 *.pyc
 *.zip
 *.ipynb
-custom_config.py
+configCustom.py
+!boilerplates/*.ipynb

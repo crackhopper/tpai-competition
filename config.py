@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
-# Do not modify this file, and make your own config file in custom_config.py.
-# (which would not be tracked by git)
+# Do not modify this file, and make your own config file in
+# `cfg_extractor.py`. (which would not be tracked by git)
 
 # This file is provided as a default configuration file.
 
@@ -13,19 +13,20 @@ resultDir = './_result/'
 dataFile = 'store.db'
 infoFile = 'info.pkl'
 
-# extract_features
-from competition.featExtract.raw import Raw as Extractor
-extractor_name = 'raw'
+# extractor
+from competition.extractors.raw import extractor,extractor_name
 
-# build_model
-from competition.models.impute_rf import estimator,tuned_parameters
-estimator_name = 'impute_rf'
+# models
+from competition.models.impute_rf import estimator,estimator_name
+tuned_parameters = [{},]
 
 # other configs
 bShuffle = True
+bProb = False
 
+# load custom config
 import os
-if os.path.exists('custom_config.py'):
-  from custom_config import *
+if os.path.exists('configCustom.py'):
+  from configCustom import *
 
 

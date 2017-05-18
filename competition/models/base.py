@@ -6,5 +6,3 @@ class BaseModel(BaseEstimator): # compatible with sklearn
     raise NotImplementedError
   def predict(self,X):
     raise NotImplementedError
-  def fit_predict(self,X):
-    raise NotImplementedError

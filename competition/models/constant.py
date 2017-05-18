@@ -8,11 +8,7 @@ class Constant(BaseEstimator):
         return self
     def predict(self,X):
         return self.fit_predict(X)
-    def fit_predict(self,X):
-        N = X.shape[0]
-        return np.ones([N])*self.val
 
-estimator = Constant()
-tuned_parameters = [{
-        'val':[0,1],
-},]
+# must provide extractor and extractor_name
+extractor = Constant()
+extractor_name = Constant.__name__
