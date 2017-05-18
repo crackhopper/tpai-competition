@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from competition.featExtract.base import BaseExtractor
+from base import BaseExtractor
 import pandas as pd
 
 class Raw(BaseExtractor):

@@ -1,3 +1,4 @@
+
 # -*- coding:utf-8 -*-
 import pandas as pd
 from config import *
@@ -27,7 +28,7 @@ file_tb={
 pickle.dump(file_tb,info)
 
 for n,s in file_tb.items():
-  store[n]=pd.read_csv(dataDir+n+'.csv')
+    store[n]=pd.read_csv(dataDir+n+'.csv')
 store.flush(fsync=True)
 
 

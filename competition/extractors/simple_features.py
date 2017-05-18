@@ -1,6 +1,6 @@
 # this is an example extractor, and you should develop your own according to the
 # dataset.
-from competition.featExtract.base import BaseExtractor
+from base import BaseExtractor
 import os
 import pandas as pd
 

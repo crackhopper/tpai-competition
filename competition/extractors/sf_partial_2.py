@@ -1,8 +1,30 @@
-from competition.featExtract.base import Extractor
+from competition.extractors.base import BaseExtractor
 import pandas as pd
 import os
-class SFPartial2(Extractor):
-    def __init__(self, raw_data):
+class SFPartial2(BaseExtractor):
+    def get_train(self,raw_data):
+        self.init(raw_data)
+        X,y = self._get(self.raw_data.store['train'])
+        idx = X['clickTime']<190000
+        X=X[idx]
+        y=y[idx]
+        X = self.merge_tables(X)
+        return X,y
+
+    def get_test(self,raw_data):
+        self.init(raw_data)
+        X,y = self._get(self.raw_data.store['test'])
+        X = self.merge_tables(X)
+        return X,y
+
+    def _get(self,dataframe):
+        X = dataframe[self.raw_data.common_feat]
+        y = dataframe[self.raw_data.label_name]
+        return X,y
+
+    def init(self, raw_data):
+        if hasattr(self,'bInit'):
+            return
         self.raw_data = raw_data
         store = raw_data.store
         f_user = store['feat-user-default']
@@ -21,24 +43,7 @@ class SFPartial2(Extractor):
 
             return X
         self.merge_tables = merge_tables
-
-    def get_train(self):
-        X,y = self._get(self.raw_data.store['train'])
-        idx = X['clickTime']<190000
-        X=X[idx]
-        y=y[idx]
-        X = self.merge_tables(X)
-        return X,y
-
-    def get_test(self):
-        X,y = self._get(self.raw_data.store['test']) 
-        X = self.merge_tables(X)
-        return X,y
-
-    def _get(self,dataframe):
-        X = dataframe[self.raw_data.common_feat]
-        y = dataframe[self.raw_data.label_name]
-        return X,y
+        self.bInit=True
 
 # must provide extractor and extractor_name
 extractor = SFPartial2()

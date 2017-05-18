@@ -12,7 +12,9 @@ testY = clf.predict(X_test)
 fname = 'submission.csv'
 fnamezip = fname+'.zip'
 if os.path.exists(fname):
+    os.chdir(curdir)
     raise RuntimeError("%s exsits, cannot overwrite"%fname)
+
 with open(fname,'w') as f:
     f.write('instanceId,prob\n')
     for i,y in enumerate(testY):
