@@ -6,6 +6,7 @@ This is a tool box for data mining competitions.
 - clone the repo
 - download the data from http://spabigdata-1253211098.file.myqcloud.com/pre.zip
 - extract the files into `_data` directory
+- install xgboost according : http://xgboost.readthedocs.io/en/latest/build.html
 
 ## 0. convert data
 - run `python run_0_convert_data.py`
