@@ -29,8 +29,8 @@ those new notebooks.
 
 NOTE: 
 - you need copy the boilerplates into the root directory of the project. Then
-  run them.
-- you should not modify the boilerplates file.
+  modify and run them.
+- you should not modify the original boilerplates file.
 
 ## Configuration
 - The default configuration file is `config.py`. You should not change that
