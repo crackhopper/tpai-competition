@@ -19,6 +19,7 @@ from competition.extractors.raw import extractor,extractor_name
 # models
 from competition.models.impute_rf import estimator,estimator_name
 tuned_parameters = [{},]
+para_name = ''
 
 # other configs
 bShuffle = True

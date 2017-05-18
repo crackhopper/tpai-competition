@@ -10,7 +10,7 @@ from competition.models import official_score
 import numpy as np
 import pickle
 
-destdir = './_results/%s-%s/'%(extractor_name,estimator_name)
+destdir = './_results/%s-%s%s/'%(extractor_name,estimator_name,para_name)
 if not os.path.exists(destdir):
     os.mkdir(destdir)
 if os.path.exists(os.path.join(destdir,'model.pkl')):
