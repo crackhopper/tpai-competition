@@ -27,6 +27,11 @@ They are notebook files used as boilerplates for user to design their own
 experiment environment. Clone new notebooks based on them and do experiments on
 those new notebooks.
 
+NOTE: 
+- you need copy the boilerplates into the root directory of the project. Then
+  run them.
+- you should not modify the boilerplates file.
+
 ## Configuration
 - The default configuration file is `config.py`. You should not change that
   file.
