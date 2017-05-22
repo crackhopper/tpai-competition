@@ -2,12 +2,12 @@
 import pandas as pd
 import os
 
-def extract_features(extractor,extractor_name,store, raw_data):
+def extract_features(extractor, filename, raw_data, X=None, y=None):
   print 'extracting features...'
-  trainX,trainY = extractor.get_train(raw_data)
-  testX,testY  = extractor.get_test(raw_data)
+  trainX,trainY = extractor.get_train(X,y,raw_data)
+  testX,testY  = extractor.get_test(X,y,raw_data)
 
-  fname = './_extracted/%s.db'%extractor_name
+  fname = filename
   if os.path.exists(fname):
     raise RuntimeError("%s exists"%fname)
 
@@ -20,6 +20,6 @@ def extract_features(extractor,extractor_name,store, raw_data):
   print 'extracting features...done'
 
 if __name__ == '__main__':
-  from config import *
-  from data import store,  raw_data
-  extract_features(extractor,extractor_name, store, raw_data)
+  from config1 import *
+  from data import raw_data
+  extract_features(extractor,extractFile, store, raw_data)

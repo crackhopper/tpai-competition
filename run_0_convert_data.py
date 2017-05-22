@@ -1,7 +1,6 @@
-
 # -*- coding:utf-8 -*-
 import pandas as pd
-from config import *
+from config0 import *
 import os
 import pickle
 
@@ -83,6 +82,22 @@ print 'extract pos feature'
 res = store['pos']
 
 store['feat-pos-default']=res
+
+
+# merge all tables
+f_user = store['feat-user-default']
+f_ad = store['feat-ad-default']
+f_pos = store['position']
+def merge_tables(X):
+    X = pd.merge(X,f_user,how='left',left_on='userID',right_on='userID')
+    X = pd.merge(X,f_ad,how='left',left_on='creativeID',right_on='creativeID')
+    X = pd.merge(X,f_pos,how='left',left_on='positionID',right_on='positionID')
+    return X
+
+store['train'] = merge_tables(store['train'])
+store['test'] = merge_tables(store['test'])
+store.flush(fsync=True)
+
 
 store.close()
 info.close()
