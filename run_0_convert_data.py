@@ -79,15 +79,14 @@ store['feat-ad-default']=res
 
 # extract pos feature
 print 'extract pos feature'
-res = store['pos']
-
+res = store['position']
 store['feat-pos-default']=res
 
 
 # merge all tables
 f_user = store['feat-user-default']
 f_ad = store['feat-ad-default']
-f_pos = store['position']
+f_pos = store['feat-pos-default']
 def merge_tables(X):
     X = pd.merge(X,f_user,how='left',left_on='userID',right_on='userID')
     X = pd.merge(X,f_ad,how='left',left_on='creativeID',right_on='creativeID')

@@ -1,5 +1,6 @@
-from BaseExtractor import BaseExtractor
+from Base import BaseExtractor
 import pandas as pd
+import os
 
 class Combine(BaseExtractor):
   def __init__(self,extractors):

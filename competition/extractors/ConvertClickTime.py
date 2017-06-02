@@ -1,4 +1,4 @@
-from BaseExtractor import BaseExtractor
+from Base import BaseExtractor
 import pandas as pd
 import os
 class ConvertClickTime(BaseExtractor):

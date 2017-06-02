@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-from BaseExtractor import BaseExtractor
+from Base import BaseExtractor
 import pandas as pd
 
 class Raw(BaseExtractor):

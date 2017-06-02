@@ -1,16 +1,18 @@
 # -*- coding:utf-8 -*-
 import os
 import numpy as np
-from config import *
-from extracted import extracted
+from config2 import *
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import classification_report
 from competition.models import official_score
 import numpy as np
 import pickle
+from extracted import loadFile
+extracted = loadFile(input_file)
 
-destdir = './_results/%s-%s%s/'%(extractor_name,estimator_name,para_name)
+
+destdir = './_results/%s-%s%s/'%(input_file,estimator_name,para_name)
 if not os.path.exists(destdir):
     os.mkdir(destdir)
 if os.path.exists(os.path.join(destdir,'model.pkl')):
@@ -21,7 +23,6 @@ X_train = extracted['trX']
 y_train = extracted['trY']
 X_test = extracted['teX']
 
-bShuffle = True
 if bShuffle:
     N = X_train.shape[0]
     idx = np.random.permutation(N)
@@ -59,3 +60,30 @@ print -official_score(clf,X_train,y_train)
 
 with open(os.path.join(destdir,'model.pkl'),'wb') as f:
     pickle.dump(clf,f)
+
+
+### saving the result
+print 'predicting....'
+curdir = os.getcwd()
+os.chdir(destdir)
+
+X_test = extracted['teX']
+
+testY = clf.predict(X_test)
+fname = 'submission.csv'
+fnamezip = fname+'.zip'
+if os.path.exists(fname):
+    os.chdir(curdir)
+    raise RuntimeError("%s exsits, cannot overwrite"%fname)
+
+with open(fname,'w') as f:
+    f.write('instanceId,prob\n')
+    for i,y in enumerate(testY):
+        f.write('%d,%.6f\n'%(i+1,y))
+
+if os.path.exists(fnamezip):
+    os.remove(fnamezip)
+
+os.system('zip %s %s'%(fnamezip,fname))
+os.chdir(curdir)
+print 'done'
