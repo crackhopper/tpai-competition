@@ -26,7 +26,7 @@ X_test = extracted['teX']
 if bShuffle:
     N = X_train.shape[0]
     idx = np.random.permutation(N)
-    X_train = X_train.as_matrix()[idx]
+    X_train = X_train.iloc[idx,:]
     y_train = y_train.as_matrix()[idx]
 
 score = official_score
