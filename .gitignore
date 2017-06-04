@@ -10,3 +10,5 @@ store
 *.ipynb
 *config*_rc.py
 !boilerplates/*.ipynb
+tune_results.txt
+log.txt
